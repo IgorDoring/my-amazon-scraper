@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Project Task</title>
+  </head>
+  <body>
+    <h1>Scraping Amazon</h1>
+    <main>
+      <section>
+        <form>
+          <input id="k" type="text" name="keywords" />
+          <button type="button" onclick="scrape()">Scrape</button>
+        </form>
+      </section>
+      <p id="loading" style="display: none">Loading</p>
+      <div id="products">
+        <div class="product">
+          <img src="" alt="" width="300px" />
+          <h6>Nome do Produto</h6>
+          <p>Nota do produto, based in xxx reviews</p>
+        </div>
+      </div>
+    </main>
+    <script src="js/script.js"></script>
+    <script>
+      let products;
+
+      function insertProducts() {
+
+      }
+      function scrape() {
+        let keyword = document.getElementById("k").value;
+        if (keyword) {
+          keyword = keyword.trim();
+          keyword = keyword.replace(" ", "+");
+        }
+        const xhttp = new XMLHttpRequest();
+        console.log("requesting to /api/scrape");
+        xhttp.onreadystatechange = function () {
+          document.getElementById("loading").style.display = "block";
+          if (this.readyState == 4 && this.status == 200) {
+            console.log("request successful");
+            products = JSON.parse(this.responseText);
+            //TODO: feed home with products
+            document.getElementById("loading").style.display = "none";
+          }
+        };
+        xhttp.open("GET", "/api/scrape?keyword=" + keyword);
+        xhttp.send();
+      }
+    </script>
+  </body>
+</html>

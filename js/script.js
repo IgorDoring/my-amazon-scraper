@@ -2,21 +2,18 @@ const { default: axios } = require("axios");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-const url = "https://www.amazon.com/s?k=";
-
-async function getSearchPage(searchQuery) {
-  searchQuery = searchQuery.trim();
-  searchQuery = searchQuery.replace(" ", "+");
+exports.scrapeSearchPage = async function getSearchPage(searchQuery) {
+  // TODO: ERROR HANDLING try catch
+  const url = "https://www.amazon.com/s?k=";
 
   const searchUrl = url + searchQuery;
-  console.log(searchUrl);
   const response = await axios.get(searchUrl, {
     headers: {
       Accept: "text/html, application/xhtml+xml",
       Host: "www.amazon.com",
       "User-Agent":
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
-    },
+    }
   });
 
   let products = [];
@@ -32,6 +29,7 @@ async function getSearchPage(searchQuery) {
         "span[data-component-type=s-client-side-analytics] span a span.a-size-base"
       );
       let imgUrl = product.querySelector("img").src;
+
       products.push({
         name: nameEl.textContent,
         rating: ratingEl != null ? ratingEl.textContent : "No Ratings yet",
@@ -40,7 +38,5 @@ async function getSearchPage(searchQuery) {
       });
     });
 
-  console.log(products);
-}
-
-getSearchPage("creatine");
+  return JSON.stringify(products);
+};
