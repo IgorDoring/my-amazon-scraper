@@ -1,7 +1,9 @@
-var scrape = require("./js/script.js");
+var scrape = require("./public/js/script.js");
 const express = require("express");
 const app = express();
 const port = 3000;
+
+app.use(express.static('public'))
 
 app.get("/", (req, res) => {
   res.sendFile("./public/index.html", {
@@ -11,7 +13,7 @@ app.get("/", (req, res) => {
 
 app.get("/api/scrape", async (req, res) => {
   let keyword = req.query.keyword;
-  scrape.scrapeSearchPage("creatine").then((products) => {
+  scrape.scrapeSearchPage(keyword).then((products) => {
     res.json(products);
   });
 });

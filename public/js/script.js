@@ -1,9 +1,9 @@
-const { default: axios } = require("axios");
+const {default: axios} = require('axios');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 exports.scrapeSearchPage = async function getSearchPage(searchQuery) {
-  // TODO: ERROR HANDLING try catch
+  
   const url = "https://www.amazon.com/s?k=";
 
   const searchUrl = url + searchQuery;

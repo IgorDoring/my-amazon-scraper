@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body{
+	background-color: #f2f2f2;
+}
+
+main {
+  width: 90%;
+  margin: 0 auto;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 15px 15px 0 0 ;
+}
+
+form {
+  display: flex;
+  gap: 0.25rem;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+form input {
+  min-width: 200px;
+  flex-grow: 1;
+  padding: 0.15rem;
+}
+
+#loading {
+  text-align: center;
+}
+
+section#results {
+  margin-top: 1rem;
+}
+
+#results h4 {
+	margin-bottom: 1rem;
+}
+
+#products-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	gap: 0.5rem;
+	justify-content: space-between;
+}
+
+#products-wrapper .product {
+	background-color: #d2d2d2;
+	border-radius: 15px;
+	width: 100%;
+	padding: 0.5rem;
+}
+
+.products-wrapper .product img{
+	margin-bottom: 0.3rem;
+}
+
+@media screen and (min-width: 768px) {
+	#products-wrapper {
+		justify-content: center;
+	}
+
+	#products-wrapper .product {
+		flex-grow: 2;
+		max-width: 300px;
+	}
+}

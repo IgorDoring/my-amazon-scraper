@@ -3,24 +3,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Project Task</title>
+    <base href="/">
+    <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body>
-    <h1>Scraping Amazon</h1>
     <main>
-      <section>
+      <header>
+        <h1>My Scraper</h1>
         <form>
           <input id="k" type="text" name="keywords" />
           <button type="button" onclick="scrape()">Scrape</button>
         </form>
-      </section>
-      <p id="loading" style="display: none">Loading</p>
-      <div id="products">
-        <div class="product">
-          <img src="" alt="" width="300px" />
-          <h6>Nome do Produto</h6>
-          <p>Nota do produto, based in xxx reviews</p>
+      </header>
+      <p id="loading" style="display: none">Loading...</p>
+      <section id="results">
+        <h4>Results</h4>
+        <div id="products-wrapper">
+          <div class="product">
+            <img src="" alt="" width="270px" />
+            <h4>Nome do Produto</h4>
+            <p>0.0 out of 5 stars (0000 reviews)</p>
+          </div>
         </div>
-      </div>
+      </section>
     </main>
     <script src="js/script.js"></script>
     <script>
@@ -36,11 +41,11 @@
           keyword = keyword.replace(" ", "+");
         }
         const xhttp = new XMLHttpRequest();
-        console.log("requesting to /api/scrape");
+        console.log("requesting");
         xhttp.onreadystatechange = function () {
           document.getElementById("loading").style.display = "block";
           if (this.readyState == 4 && this.status == 200) {
-            console.log("request successful");
+            console.log("request successful", this.responseText);
             products = JSON.parse(this.responseText);
             //TODO: feed home with products
             document.getElementById("loading").style.display = "none";
