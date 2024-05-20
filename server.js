@@ -1,4 +1,4 @@
-var scrape = require("./public/js/script.js");
+var scrape = require("./scriptAxios.js");
 const express = require("express");
 const app = express();
 const port = 3000;
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 app.get("/api/scrape", async (req, res) => {
   let keyword = req.query.keyword;
   scrape.scrapeSearchPage(keyword).then((products) => {
-    res.json(products);
+    res.send(products);
   });
 });
 

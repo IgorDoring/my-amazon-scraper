@@ -19,41 +19,9 @@
       <section id="results">
         <h4>Results</h4>
         <div id="products-wrapper">
-          <div class="product">
-            <img src="" alt="" width="270px" />
-            <h4>Nome do Produto</h4>
-            <p>0.0 out of 5 stars (0000 reviews)</p>
-          </div>
         </div>
       </section>
     </main>
     <script src="js/script.js"></script>
-    <script>
-      let products;
-
-      function insertProducts() {
-
-      }
-      function scrape() {
-        let keyword = document.getElementById("k").value;
-        if (keyword) {
-          keyword = keyword.trim();
-          keyword = keyword.replace(" ", "+");
-        }
-        const xhttp = new XMLHttpRequest();
-        console.log("requesting");
-        xhttp.onreadystatechange = function () {
-          document.getElementById("loading").style.display = "block";
-          if (this.readyState == 4 && this.status == 200) {
-            console.log("request successful", this.responseText);
-            products = JSON.parse(this.responseText);
-            //TODO: feed home with products
-            document.getElementById("loading").style.display = "none";
-          }
-        };
-        xhttp.open("GET", "/api/scrape?keyword=" + keyword);
-        xhttp.send();
-      }
-    </script>
   </body>
 </html>

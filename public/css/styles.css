@@ -8,7 +8,7 @@
 }
 
 body{
-	background-color: #f2f2f2;
+	background-color: whitesmoke;
 }
 
 main {
@@ -62,17 +62,28 @@ section#results {
 }
 
 #products-wrapper .product {
-	background-color: #d2d2d2;
+	background-color: white;
 	border-radius: 15px;
 	width: 100%;
-	padding: 0.5rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-.products-wrapper .product img{
-	margin-bottom: 0.3rem;
+#products-wrapper .product p {
+	flex: auto;
 }
 
 @media screen and (min-width: 768px) {
+	form input{
+		max-width: 450px;
+	}
+
+	main{
+		max-width: 600px;
+	}
+
 	#products-wrapper {
 		justify-content: center;
 	}
@@ -80,5 +91,11 @@ section#results {
 	#products-wrapper .product {
 		flex-grow: 2;
 		max-width: 300px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	main{
+		max-width: 1000px;
 	}
 }
