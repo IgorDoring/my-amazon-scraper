@@ -45,7 +45,8 @@ form input {
   text-align: center;
 }
 
-section#results {
+#results {
+	display: none;
   margin-top: 1rem;
 }
 
@@ -57,12 +58,13 @@ section#results {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: row;
-	gap: 0.5rem;
+	gap: 0.75rem;
 	justify-content: space-between;
 }
 
 #products-wrapper .product {
 	background-color: white;
+	padding: 0.25rem;
 	border-radius: 15px;
 	width: 100%;
 	display: flex;

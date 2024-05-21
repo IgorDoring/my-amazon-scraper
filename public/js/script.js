@@ -32,6 +32,7 @@ function scrape() {
     if (this.readyState == 4 && this.status == 200) {
       console.log("request successful", this.responseText);
       document.getElementById("loading").style.display = "none";
+      document.getElementById("results").style.display = "block";
       products = JSON.parse(this.responseText);
       insertProducts(products);
     }
@@ -41,6 +42,6 @@ function scrape() {
         "Sorry, something went wrong";
     }
   };
-  xhttp.open("GET", "/api/scrape?keyword=" + keyword);
+  xhttp.open("GET", "api/scrape?keyword=" + keyword);
   xhttp.send();
 }
