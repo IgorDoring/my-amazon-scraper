@@ -1,19 +1,18 @@
-const {default: axios} = require('axios');
+const { default: axios } = require("axios");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 exports.scrapeSearchPage = async function getSearchPage(searchQuery) {
-  
-  const url = "https://www.amazon.com/s?k=";
+  const url = "https://www.amazon.com/s?k=" + searchQuery;
 
-  const searchUrl = url + searchQuery;
-  const response = await axios.get(searchUrl, {
+  const response = await axios.get(url, {
     headers: {
-      Accept: "text/html, application/xhtml+xml",
-      Host: "www.amazon.com",
-      "User-Agent":
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
-    }
+      'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+      'Accept-Language': 'da, en-gb, en',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+      'Referer': 'https://www.google.com/'
+    },
   });
 
   let products = [];
