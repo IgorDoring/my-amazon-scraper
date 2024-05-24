@@ -3,13 +3,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test Project Task</title>
-    <base href="/">
-    <link rel="stylesheet" href="../css/styles.css">
+    <base href="/" />
+    <link rel="stylesheet" href="../css/styles.css" />
   </head>
   <body>
     <main>
       <header>
         <h1>My Scraper</h1>
+        <p>
+          <strong>DISCLAIMER</strong>
+          <br />
+          This is a coding project for a technical test of a fullstack
+          internship <br />
+          <strong>IT IS NOT MEANT TO USE AS A PRODUCT!</strong>
+          <br />It consist of scraping the products of the first page of Amazon.
+        </p>
         <form>
           <input id="k" type="text" name="keywords" />
           <button type="button" onclick="scrape()">Scrape</button>
@@ -18,8 +26,7 @@
       <p id="loading" style="display: none">Loading...</p>
       <section id="results">
         <h4>Results</h4>
-        <div id="products-wrapper">
-        </div>
+        <div id="products-wrapper"></div>
       </section>
     </main>
     <script src="js/script.js"></script>
